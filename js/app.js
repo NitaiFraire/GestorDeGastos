@@ -91,7 +91,30 @@ class Interfaz{
         // insertar al html
         restante.innerHTML = `${presupuestoRestanteUsuario}`;
 
-        console.log(presupuestoRestanteUsuario);
+        this.comprobarPresupuesto();
+    }
+
+    // cambiar color el presupuesto restante
+    comprobarPresupuesto(){
+
+        // valores del objeto cantidadPresupuesto
+        const presupuestoTotal = cantidadPresupuesto.presupuesto;
+        const presupuestoRestante = cantidadPresupuesto.restante;
+    
+        // comprobar el 25% del presupuesto
+        if((presupuestoTotal / 4) > presupuestoRestante){
+
+            const restante = document.querySelector('.restante');
+            restante.classList.remove('alert-success', 'alert-waning');
+            restante.classList.add('alert-danger');
+        
+        // comprobar el 50% del presupuesto
+        } else if((presupuestoTotal / 2) > presupuestoRestante){
+
+            const restante = document.querySelector('.restante');
+            restante.classList.remove('alert-success');
+            restante.classList.add('alert-warning');
+        }
     }
 }
 
