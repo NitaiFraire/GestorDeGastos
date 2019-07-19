@@ -63,6 +63,24 @@ class Interfaz{
 
         }, 3000)
     }
+
+    // inserta los gastos a la lista
+    agregarGastoListado(nombre, cantidad){
+
+        // seleccion de listado
+        const gastosListado = document.querySelector('#gastos ul');
+
+        // crear li
+        const li = document.createElement('li');
+        li.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+        // inertar el gasto
+        li.innerHTML = `${nombre}
+                        <span class="badge badge-primary badge-pill"> $ ${cantidad} </span>`;
+
+        // insertar al html
+        gastosListado.appendChild(li);
+    }
 }
 
 
@@ -102,11 +120,13 @@ formulario.addEventListener('submit', function(e){
     // validar datos del formulario
     if(nombreGasto === '' || cantidadGasto === ''){
 
-        console.log('error');
         // 2 parametros: mensaje y tipo 
         gui.imprimirMensaje('Hubo un error', 'error');
     }else{
         
+        // insertar en el html
+        gui.imprimirMensaje('Correcto', 'correcto');
+        gui.agregarGastoListado(nombreGasto, cantidadGasto);
         console.log('no error');
     }
 
