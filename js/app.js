@@ -34,9 +34,6 @@ class Interfaz{
         // insertar al html
         presupuestoSpan.innerHTML = `${cantidad}`;
         restanteSpan.innerHTML = `${cantidad}`;
-        
-        console.log(cantidad);
-
     }
 
     imprimirMensaje(mensaje, tipo){
@@ -80,6 +77,21 @@ class Interfaz{
 
         // insertar al html
         gastosListado.appendChild(li);
+    }
+
+    // comprueba el presupuesto restante
+    presupuestoRestante(cantidad){
+
+        // campo de presupuesto restante
+        const restante = document.querySelector('span#restante');
+
+        // leer presupuesto restante del objeto global cantidadPresupuesto que se crea apartir de insertar presupuesto en el prompt
+        const presupuestoRestanteUsuario = cantidadPresupuesto.presupuestoRestante(cantidad);
+
+        // insertar al html
+        restante.innerHTML = `${presupuestoRestanteUsuario}`;
+
+        console.log(presupuestoRestanteUsuario);
     }
 }
 
@@ -127,7 +139,7 @@ formulario.addEventListener('submit', function(e){
         // insertar en el html
         gui.imprimirMensaje('Correcto', 'correcto');
         gui.agregarGastoListado(nombreGasto, cantidadGasto);
-        console.log('no error');
+        gui.presupuestoRestante(cantidadGasto);
     }
 
 });
